@@ -1,1 +1,28 @@
-<p>message-details works!</p>
+<mat-card>
+
+    <mat-card-header>
+      <mat-card-title><h2> message Deails</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+        {{message.contents}}
+
+      <br>
+
+        {{notNew}}
+
+      <br>
+
+        {{href}}
+
+      <br>
+
+      <a routerLink="/messages"> <button  mat-fab  color="primary">Home</button></a>
+      <a routerLink="/messages/{{message.id}}"> <button mat-fab color="primary">Edit</button></a>
+
+    </mat-card-content>
+
+
+
+</mat-card>
+

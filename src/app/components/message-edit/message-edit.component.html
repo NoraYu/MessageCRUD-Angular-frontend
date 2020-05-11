@@ -1,0 +1,75 @@
+<!--<mat-card>-->
+<!--<mat-card-conten>-->
+<!--  <div class="section-content section-content-p30">-->
+<!--    <div class="container-fluid">-->
+
+<!--      <form [formGroup]="messageFormGroup" (ngSubmit)="onSubmit()">-->
+<!--        <div formGroupName="customer" class="form-area">-->
+<!--          <div class="row">-->
+<!--            <div class="col-md-2"> <label>posted by</label></div>-->
+<!--            <div class="col-md-9">-->
+<!--              <div class="input-space">-->
+<!--                <input formControlName="Name" type="text">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div formGroupName="contents" class="form-area">-->
+
+
+<!--          <div class="row">-->
+<!--            <div class="col-md-2"> <label>contents</label></div>-->
+<!--            <div class="col-md-9">-->
+<!--              <div class="input-space">-->
+<!--                <input formControlName="What's on your mind?" type="text">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="text-center">-->
+<!--          <button type="submit" class="btn btn-info">submit</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</mat-card-conten>-->
+<!--</mat-card>-->
+<mat-card>
+  <form #messageForm="ngForm" (ngSubmit)="save(messageForm.value)">
+    <mat-card-header>
+      <mat-card-title><h2>{{message.contents ? 'Edit' : 'Add'}} message</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+      <input matInput placeholder="href" name="href" [(ngModel)]="href">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+      <input matInput placeholder="message notNew"  [(ngModel)]="notNew"
+             name="notNew">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="message contents" [(ngModel)]="message.contents"
+               required name="contents" #contents>
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!messageForm.valid">Save</button>
+      <button mat-raised-button color="secondary" (click)="remove(href)"
+              *ngIf="notNew" type="button">Delete</button>
+      <a mat-button routerLink="/message-list">Cancel</a>
+    </mat-card-actions>
+<!--    <app-message-details-->
+<!--      [message]="message"-->
+<!--      [href]="href"-->
+<!--      [notNew]="notNew">-->
+<!--    </app-message-details>-->
+  </form>
+</mat-card>
+
+
+
+

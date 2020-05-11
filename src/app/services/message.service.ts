@@ -20,23 +20,30 @@ getAll(): Observable<Message[]>{
   );
 }
 
-save(message: any): Observable<Message>{
+
+save(message: any): Observable<any>{
     let result: Observable<any>;
-    if (message.href){
+    if (message.notNew === true){
       result = this.httpClient.put(message.href, message);
+      console.log('update');
     } else {
       result = this.httpClient.post(this.messageAPI, message);
+      message.notNew = true;
+      console.log('creat new');
     }
     return result;
+}
+
+
+get(id: number): Observable<any> {
+    return this.httpClient.get<Message>(`${this.messageAPI}/${id}`);
 }
 
 romove(href: string){
     return this.httpClient.delete(href);
 }
-
-
-
 }
+
 interface GetResponseMessage {
   _embedded: {
     messages: Message[];

@@ -13,18 +13,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-const routes: Routes = [
-  {path: 'messages/:id', component: MessageDetailsComponent},
-  {path: 'messages', component: MessageListComponent},
-  {path: '', redirectTo: '/messages', pathMatch: 'full'},
-  {path: '**', redirectTo: '/messages', pathMatch: 'full'}
-];
+import { MessageEditComponent } from './components/message-edit/message-edit.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageListComponent,
-    MessageDetailsComponent
+    MessageDetailsComponent,
+    MessageEditComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +34,9 @@ const routes: Routes = [
     MatCardModule,
     MatInputModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,10 +9,12 @@ import {MessageService} from '../../services/message.service';
 })
 export class MessageListComponent implements OnInit {
   messages: Message[];
-  constructor(private messageService: MessageService) { }
+  detailsUrl: string;
+
+  constructor(private messageService: MessageService) {
+  }
 
   ngOnInit(): void {
     this.messageService.getAll().subscribe(data => this.messages = data);
   }
-
 }
